@@ -12,7 +12,8 @@
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/acckrs/crayon1/master/",
     "aiTemplateUrl": "[uri(variables('templateBaseUrl'), 'template-applicationinsights.json')]",
-    "appSvcTemplateUrl": "[uri(variables('templateBaseUrl'), 'template-appserviceplan-windows.json')]"
+    "appSvcPlanTemplateUrl": "[uri(variables('templateBaseUrl'), 'template-appserviceplan-windows.json')]",
+    "appSvcTemplateUrl": "[uri(variables('templateBaseUrl'), 'template-service.json')]"
   },
   "resources": [
     {
@@ -39,13 +40,27 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[variables('appSvcTemplateUrl')]",
+          "uri": "[variables('appSvcPlanTemplateUrl')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "resourceName": {
             "value": "[parameters('resourceName')]"
           }
+        }
+      }
+    },
+    {
+      "name": "linkedDeployment3",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('appSvcTemplateUrl')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
         }
       }
     }
