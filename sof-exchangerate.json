@@ -24,10 +24,9 @@
           "uri": "[variables('aiTemplateUrl')]",
           "contentVersion": "1.0.0.0"
         },
-      "parametersLink": {
-        "uri": "[uri(variables('templateBaseUrl'), 'sof-exchangerate-dit-parameters.json')]",
-        "contentVersion": "1.0.0.0"
-      }
+        "parameters": {
+          "resourceName":"crayon1"
+        }
       }
     }
   ]
