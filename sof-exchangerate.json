@@ -54,6 +54,10 @@
       "name": "linkedDeployment3",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2020-10-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'linkedDeployment1')]",
+        "[resourceId('Microsoft.Resources/deployments', 'linkedDeployment2')]"
+      ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -63,6 +67,12 @@
         "parameters": {
           "resourceName": {
             "value": "[parameters('resourceName')]"
+          },
+          "applicationInsightsKey": {
+            "value": "[reference('linkedDeployment1').outputs.AppInsightAppId.value]"
+          },
+          "planId": {
+            "value": "[reference('linkedDeployment2').outputs.resourceId.value]"
           }
         }
       }
