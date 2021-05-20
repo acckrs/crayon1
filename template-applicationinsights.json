@@ -30,7 +30,7 @@
       "outputs": {
         "AppInsightAppId": {
             "type": "String",
-            "value": "[reference(resourceId('Microsoft.Insights/components', variables('applicationInsightsName')), '2014-04-01').AppId]"
+            "value": "[reference(resourceId('Microsoft.Insights/components', variables('applicationInsightsName')), '2014-04-01','Full').properties.InstrumentationKey]"
         }
     }
 }
