@@ -4,6 +4,9 @@
   "parameters": {
     "environmentStage": {
       "value": "DIT"
+    },
+    "resourceName": {
+      "value": "crayon1"
     }
   }
 }
