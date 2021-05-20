@@ -25,7 +25,9 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "resourceName":"crayon1"
+          "resourceName": {
+            "value": "[parameters('resourceName')]"
+          }
         }
       }
     }
